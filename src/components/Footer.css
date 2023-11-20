@@ -1,0 +1,30 @@
+.footer {
+    margin-inline: 30px;
+    margin-top: 100px;
+    background-color: #f8f9fa;
+    padding: 40px 0;
+    border-radius: 0px 0px 0px 0px;
+    -moz-border-radius: 0px 0px 0px 0px;
+    -webkit-border-radius: 0px 0px 0px 0px;
+    border: 4px outset #e0d9e0;
+}
+
+.footer-links li a {
+    color: #6c757d;
+    text-decoration: none;
+}
+
+.footer-links li a:hover {
+    color: #007bff;
+}
+
+.footer-social a {
+    color: #6c757d;
+    margin: 0 10px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.footer-social a:hover {
+    color: #007bff;
+}

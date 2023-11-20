@@ -1,32 +1,33 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './Menu.css'; // Importar el archivo CSS de estilos
+import './About.css'; // Importar el archivo CSS de estilos
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NAV from './navbar.js';
-import Card from './Card' 
-import image1 from '../assets/miembro1.jpg'
-import image2 from '../assets/miembro2.jpg'
-import image3 from '../assets/miembro3.jpg'
+import Card from './Card.js' 
+import Footer from './footer.js';
 
 const cards = [
     {
         id:1,
-        title: 'Conoceme',
-        image: image1,
-        url: "Conoceme"
+        title: 'Diseño Estilizado\n ',
+        encargado:'Agustín Vargas',
+        image: '',
+        url: "\nEncargado de darle el estilo a la página"
     },
     {
         id: 2,
-        title: 'Conoceme',
-        image: image2,
-        url: 'Miembro1'
+        title: 'HTML\n',
+        encargado:'Tomas Pantoja',
+        image: '',
+        url: 'Encargado de darle la estructura a la página'
     },
    
     {
         id: 3,
-        title: 'Conoceme',
-        image: image3,
-        url: 'Conoceme'
+        title: 'Funcionalidad',
+        encargado:'Benjamin Gonzalez',
+        image: '',
+        url: 'Encargado de la funcionalidad'
     }
 ]
 const Menu = () => {
@@ -38,6 +39,9 @@ const Menu = () => {
 
   return (
     <body>
+      <header className='title'>
+        <h1>App</h1>
+      </header>
       <div>
         <nav class= ''>
           <NAV title='navbar'/>
@@ -61,13 +65,16 @@ const Menu = () => {
             {    //Creamos el map para no tener que escribir reiteradas veces los paneles
                 cards.map(card=> (
                     <div className='col-md-4 member' key={card.id}>
-                        <Card title={card.title} imageSource={card.image} url={card.url}/>
+                        <Card title={card.title} imageSource={card.image} url={card.url} encargado={card.encargado}/>
                     </div>
 
                 ))
             }
         </div>
       </main>
+      <footer>
+        <Footer title='footer'/>
+      </footer>
     </body>
   );
 };
