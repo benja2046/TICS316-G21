@@ -1,22 +1,21 @@
 import React from 'react';
 import logoR from '../assets/logo.png';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import NAV from "./navbar.js";
 import Footer from "./footer.js";
+import './home.css'
 
 function Home() {
   return (
-    <body>
-      <header class="title">
-        <h1>Hola</h1>
-      </header>
+    <div className='Home'>
+      <header className='header'>
+        
+        </header>
       <div>
-        <nav class="">
+        <nav title="navbar">
           <NAV title="navbar" />
         </nav>
       </div>
-
-      <div class="Home ">
+      <div class=" ">
         <div class="Container shadow">
           <div class="Column-Text shadow">
             <br />
@@ -33,7 +32,7 @@ function Home() {
           </div>
         </div>
       </div>
-    </body>
+    </div>
   );
 }
 

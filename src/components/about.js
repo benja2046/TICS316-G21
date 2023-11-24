@@ -38,7 +38,7 @@ const Menu = () => {
   };
 
   return (
-    <body>
+    <div>
       <header className='header'>
       </header>
       <div>
@@ -74,7 +74,7 @@ const Menu = () => {
       <footer>
         <Footer title='footer'/>
       </footer>
-    </body>
+    </div>
   );
 };
 

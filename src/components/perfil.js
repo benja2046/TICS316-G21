@@ -23,16 +23,17 @@ function Usuario() {
     setImageUrl(newImageUrl);
  };
  return (
-    <div className="App">
+    <div>
       <header className='header'>
         
       </header>
       <nav>
       <NAV title='navbar'/>
     </nav>
+    <body className='bodyU'>
       <Container className='mt-5'>
         <Row>
-          <Col md={8}>
+          <Col md={6}>
             <Image src={imageUrl} roundedCircle className="profile-picture" />
             <h3 className="username">{username}</h3>
             <p className="bio">{bio}</p>
@@ -45,7 +46,7 @@ function Usuario() {
               <ListGroup.Item>Siguiendo: 150</ListGroup.Item>
             </ListGroup>
           </Col>
-          <Col md={1}>
+          <Col md={2}>
           
             <Canvas key="canvas"
             placement="end"
@@ -53,7 +54,7 @@ function Usuario() {
             updateProfile={handleUpdateProfile} />
 
           </Col>
-        </Row>
+          </Row>
           <Row>
             <Col md={4}>
               <div className="post-container">
@@ -79,12 +80,15 @@ function Usuario() {
               </div>
              </div>
             </Col>
-            </Row>
+          </Row>
       </Container>
-      <footer>
-       <Footer title='footer'/>
-    </footer>
+      </body>
+    <footer>
+      <Footer title='footer'/>
+    </footer>  
+    
     </div>
+    
     
  );
 }

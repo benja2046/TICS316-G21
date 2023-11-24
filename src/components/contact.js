@@ -1,13 +1,12 @@
-import '../App.css';
-import "./contact.css";
+import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import NAV from "./navbar.js";
-import Card from "./Card.js";
 import Footer from "./footer.js";
+import './contact.css'
 
 function Contact() {
   return (
-    <body>
+    <div className='Home'>
       <header class="title">
         <h1>Welcome</h1>
       </header>
@@ -17,7 +16,7 @@ function Contact() {
         </nav>
       </div>
 
-      <div class="Home ">
+      <div class="">
         <div class="subtitle Column-Text1 shadow">Comunicate con Nosotros</div>
 
         <div class="Container shadow">
@@ -49,7 +48,7 @@ function Contact() {
           </div>
         </div>
       </div>
-    </body>
+    </div>
   );
 }
 

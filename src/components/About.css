@@ -165,6 +165,8 @@ h3 {
   display: grid;
   flex-direction: column;
   align-items: center;
+  width: 300px; /* o algún otro valor fijo */
+
 }
 .perfil{
   max-width: 100px; /* Cambia el tamaño de la imagen según tus necesidades */
@@ -183,11 +185,4 @@ h3 {
   display: inline-block; 
   height: 180px;
   align-items: center;
-}
-.footer {
- text-align: center;
- 
-  background-size: cover;
-  background-repeat: no-repeat;
-  margin-bottom: 20px;
 }

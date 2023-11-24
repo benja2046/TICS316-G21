@@ -7,6 +7,7 @@
     -moz-border-radius: 0px 0px 0px 0px;
     -webkit-border-radius: 0px 0px 0px 0px;
     border: 4px outset #e0d9e0;
+    width: 100;
 }
 
 .footer-links li a {
