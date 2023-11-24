@@ -39,8 +39,7 @@ const Menu = () => {
 
   return (
     <body>
-      <header className='title'>
-        <h1>App</h1>
+      <header className='header'>
       </header>
       <div>
         <nav class= ''>
@@ -65,7 +64,7 @@ const Menu = () => {
             {    //Creamos el map para no tener que escribir reiteradas veces los paneles
                 cards.map(card=> (
                     <div className='col-md-4 member' key={card.id}>
-                        <Card title={card.title} imageSource={card.image} url={card.url} encargado={card.encargado}/>
+                        <Card title={card.title} url={card.url} encargado={card.encargado}/>
                     </div>
 
                 ))
