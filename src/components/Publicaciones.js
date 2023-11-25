@@ -3,10 +3,23 @@ import { Link } from "react-router-dom"
 import './Publicaciones.css';
 import Post from './Post'
 import Avatar from '@mui/material/Avatar';
+import Popup from './popup';
 
 
 
-function Home() {
+function Articles() {
+    const [showPopup, setShowPopup] = useState(false);
+    const [selectedPost, setSelectedPost] = useState(null);
+
+    const handlePostClick = (post) => {
+        setSelectedPost(post);
+        setShowPopup(true);
+    };
+
+    const handleClosePopup = () => {
+        setShowPopup(false);
+    };
+
     const [newPost, setNewPost] = useState({
         username: "TomasPantoja",
         avatarImage: "/static/images/avatar/1.jpg",
@@ -66,13 +79,12 @@ function Home() {
     };
 
     return (
-        <div className="Home">
+        <div className="Articles">
 
-
-            <div className="Home_header">
+            <div className="Articles_header">
                 <div className='left_header'>
                     <img
-                        className="Home_headerImage"
+                        className="Articles_headerImage"
                         src='/logoR.png'
                         alt="logo rawcreate"
                         width="auto"
@@ -80,9 +92,9 @@ function Home() {
                     />
                 </div>
 
-                <Link to="/Login">
+                <Link to="/publicaciones">
                     <img
-                        className="Home_Imagebrand"
+                        className="Articles_Imagebrand"
                         src='/Captura_de_pantalla_2023-11-16_233049-removebg-preview.png'
                         alt="rawcreate"
                         height="40"
@@ -95,11 +107,11 @@ function Home() {
 
                 <div className='rigth_header'>
 
-                    <Link className='logout_button' to="/Login">
-                        Log out
+                    <Link className='logout_button' to="/">
+                        Cerrar sesión
                     </Link>
 
-                    <Link to="/Login">
+                    <Link to="/perfil">
                         <Avatar
                             className='post_avatar'
                             alt="Tomas Pantoja"
@@ -112,16 +124,24 @@ function Home() {
 
             </div>
 
+            <Link to="/perfil">
+            </Link>
+
+
 
             <div className='body'>
 
                 <div className='posts'> {
                     posts.map(post => (
-                        <Post username={post.username}
+                        <Post
+                            key={post.id}
+                            username={post.username}
                             avatarImage={post.avatarImage}
                             image={post.image}
                             title={post.title}
-                            description={post.description} />
+                            description={post.description}
+                            onClick={() => handlePostClick(post)}
+                        />
                     ))
                 }
                 </div>
@@ -140,32 +160,30 @@ function Home() {
                             description: ""
                         });
                     }}>
-                        <label>Title:</label>
+                        <label>Titulo:</label>
                         <input
                             type="text"
                             name="title"
                             value={newPost.title}
                             onChange={handleInputChange}
                         />
-                        <label>Description:</label>
+                        <label>Descripción:</label>
                         <textarea
                             name="description"
                             value={newPost.description}
                             onChange={handleInputChange}
                         />
-                        <label>Image:</label>
+                        <label>Imagen:</label>
                         <input
                             type="file"
                             name="image"
                             onChange={(e) => {
-                                // Obtener la primera imagen del conjunto seleccionado
                                 const file = e.target.files[0];
-                                // Convertir la imagen a una URL de datos (data URL)
                                 const reader = new FileReader();
                                 reader.onloadend = () => {
                                     setNewPost({
                                         ...newPost,
-                                        image: reader.result // La URL de datos de la imagen
+                                        image: reader.result
                                     });
                                 };
                                 if (file) {
@@ -177,6 +195,64 @@ function Home() {
                     </form>
 
                 </div>
+                {showPopup && <Popup post={selectedPost} onClose={handleClosePopup} />}
+            </div>
+
+            
+
+            <div class="footer-basic">
+                <footer>
+
+                    <div className="list-inline">
+                        <ul>
+                            <Link to="/home"><li class="list-inline-item"><a href="#">Inicio</a></li></Link>
+                            <Link to="/contact"><li class="list-inline-item"><a href="#">Contactos</a></li></Link>
+                            <Link to="/publicaciones"><li class="list-inline-item"><a href="#">Publicaciones</a></li></Link>
+                            <Link to="/about"><li class="list-inline-item"><a href="#">RawCreate</a></li></Link>
+                        </ul>
+                    </div>
+
+                    <div className="copyright">
+                        <p >RawCreate © 2023</p>
+                    </div>
+
+
+                    <div class="social">
+                        <h5>Equipo:</h5>
+                        <a href="https://www.linkedin.com/in/tom%C3%A1s-pantoja-gallinal-97895a234/">
+                            <Avatar
+                                className='post_avatar'
+                                alt="Tomas Pantoja"
+                                src="319741640_219558007179500_3440059218991782107_n.jpg"
+                                sx={{ width: 40, height: 40 }}
+                            />
+
+                        </a>
+                        <a href="#">
+                            <Avatar
+                                className='post_avatar'
+                                alt="Agustin Vargas"
+                                src="Agustin.png"
+                                sx={{ width: 40, height: 40 }}
+                            />
+
+                        </a>
+                        <a href="#">
+                            <Avatar
+                                className='post_avatar'
+                                alt="Benjamin Gonzalez"
+                                src="benjamin.png"
+                                sx={{ width: 40, height: 40 }}
+                            />
+
+                        </a>
+                    </div>
+
+
+
+
+
+                </footer>
             </div>
 
 
@@ -185,4 +261,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Articles;
