@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import NAV from "./navbar.js";
-import Footer from "./footer.js";
 import './contact.css'
 
 function Contact() {
   return (
-    <div className='Home'>
+    <div className='Contact'>
       <header class="title">
         <h1>Welcome</h1>
       </header>

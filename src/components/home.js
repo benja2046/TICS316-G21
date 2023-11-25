@@ -1,7 +1,6 @@
 import React from 'react';
 import logoR from '../assets/logo.png';
 import NAV from "./navbar.js";
-import Footer from "./footer.js";
 import './home.css'
 
 function Home() {

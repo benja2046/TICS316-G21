@@ -1,92 +1,64 @@
   
 .shadow {
-  
-  -webkit-box-shadow: 0px 5px 16px 5px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 5px 16px 5px rgba(0,0,0,0.75);
-  box-shadow: 0px 5px 16px 5px rgba(0,0,0,0.75);
+  box-shadow: 0px 5px 16px 5px rgba(0, 0, 0, 0.75);
   padding: 50px;
   margin-bottom: 50px;
 }
 
-.subjects {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-.logos{
-  max-width: 100px; /* Cambia el tamaño de la imagen según tus necesidades */
-  height: auto;
-  background-color: transparent; /* Asegura que el fondo sea transparente */
-  border: none; /* Elimina cualquier borde alrededor de la imagen */
-  display: inline-block; /* Permite que la imagen se muestre junto al texto */
-  justify-content: space-evenly;
-  padding: 10px;
-  
-}
- 
-.imagen{
-  
-  height: auto;
-  background-color: transparent; 
-  border: none; 
-  display: inline-block; 
-  height: 180px;
-  align-items: center;
-}
-.footer {
- text-align: center;
- 
-  background-size: cover;
-  background-repeat: no-repeat;
-  margin-bottom: 20px;
-}
-
 .Container {
-
   display: flex;
   justify-content: space-around;
-  background: rgb(87, 124, 145);
-  background: linear-gradient(0deg, rgba(87, 124, 145, 1) 0%,
-   rgba(118, 132, 186, 1) 17%,
-   rgba(166, 200, 227, 1) 39%, 
-   rgba(225, 242, 219, 1) 70%, 
-   rgba(205, 230, 255, 1) 95%, 
-   rgba(177, 242, 255, 1) 100%);
- padding-bottom: 25px;
+  background: linear-gradient(
+    0deg,
+    rgba(87, 124, 145, 1) 0%,
+    rgba(118, 132, 186, 1) 17%,
+    rgba(166, 200, 227, 1) 39%,
+    rgba(225, 242, 219, 1) 70%,
+    rgba(205, 230, 255, 1) 95%,
+    rgba(177, 242, 255, 1) 100%
+  );
+  padding-bottom: 25px;
 }
+
 .Column-Text p:first-of-type {
   font-size: 60px !important;
   font-style: oblique;
   font-weight: bold;
   text-align: center;
 }
+
 .Column-Text {
   flex: 0.7;
   border-radius: 150px 30px;
   padding: 30px;
-
   font-size: 50px;
-  font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   text-align: center;
-  
   color: #6c757d;
-  
   background-color: #fff;
-  
   border: 1px solid #dee2e6;
 }
 
 .logoIcon {
   flex: 9;
-  
-    padding: 60px;
-    padding-left: 120px;padding-right: 120px;
-    border-radius: 150px 30px;
-    background-color: #fff;
-  
-    border: 1px solid #dee2e6;
+  padding: 60px;
+  padding-left: 120px;
+  padding-right: 120px;
+  border-radius: 150px 30px;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
 }
+
 .logoContainer {
-    padding-left: 40px;
-      padding-right: 70px;
+  padding-left: 40px;
+  padding-right: 70px;
+}
+
+.imagen {
+  height: auto;
+  background-color: transparent;
+  border: none;
+  display: inline-block;
+  height: 180px;
+  align-items: center;
 }
