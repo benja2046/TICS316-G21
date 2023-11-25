@@ -1,30 +1,65 @@
-import Container from 'react-bootstrap/Container';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Nav from 'react-bootstrap/Nav';
+import React, { useState, useEffect } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Link, useNavigate } from 'react-router-dom'
-import Logo from '../assets/logo.png'
-function NAV() {
+import { useNavigate } from 'react-router-dom';
+import Logo from '../assets/logo.png';
+
+const NAV = ({ onSearch }) => {
   const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [randomUser, setRandomUser] = useState(null);
+
+  const searchRandomUser = async () => {
+    try {
+      const response = await fetch('https://randomuser.me/api/');
+      const data = await response.json();
+      setRandomUser(data.results[0]);
+    } catch (error) {
+      console.error('Error fetching random user:', error);
+    }
+  };
+
+  useEffect(() => {
+    searchRandomUser();
+  }, []);
+
+   const handleSearchClick = () => {
+    onSearch(searchTerm); // Llamar a la función de búsqueda con el término actual
+    navigate(`/user/${searchTerm}`); // Navegar a la ruta del usuario buscado
+  };
+  
+
   return (
     <Navbar bg="light" expand="lg" sticky="top">
       <Container>
-        <Navbar.Brand class="rounded-circle" href="/home"><img src={Logo} class='rounded-circle' width="50" height="50" alt="Logo"/></Navbar.Brand>
+        <Navbar.Brand className="rounded-circle" href="/home">
+          <img src={Logo} className="rounded-circle" width="50" height="50" alt="Logo" />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-          <NavDropdown title="Perfil" id="basic-nav-dropdown">
+            <NavDropdown title="Perfil" id="basic-nav-dropdown">
               <NavDropdown.Item onClick={() => navigate('/perfil')}>Perfil</NavDropdown.Item>
               <NavDropdown.Item onClick={() => navigate('/about')}>About</NavDropdown.Item>
-              <NavDropdown.Item onClick={() => navigate('/publicaciones')}>publicaciones</NavDropdown.Item>
-              <NavDropdown.Item onClick={() => navigate('/contact')}>contacto</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => navigate('/publicaciones')}>Publicaciones</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => navigate('/contact')}>Contacto</NavDropdown.Item>
             </NavDropdown>
           </Nav>
+          <div className="d-flex align-items-center">
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Buscar usuario"
+            />
+            <button onClick={handleSearchClick}>Buscar Usuario</button>
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
-}
+};
 
 export default NAV;

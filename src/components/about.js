@@ -1,11 +1,11 @@
-import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './About.css'; // Importar el archivo CSS de estilos
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NAV from './navbar.js';
 import Card from './Card.js' 
 import Footer from './footer.js';
-
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 const cards = [
     {
         id:1,
@@ -32,6 +32,55 @@ const cards = [
 ]
 const Menu = () => {
   const navigate = useNavigate();
+  const { username } = useParams(); // Obtiene el parámetro de la URL (nombre de usuario)
+  const [userData, setUserData] = useState({
+    username: 'Nombre de usuario',
+    bio: 'Una breve descripción sobre ti',
+    imageUrl: 'https://via.placeholder.com/150',
+  });
+
+  const searchRandomUser = async () => {
+    try {
+      const response = await fetch('https://randomuser.me/api/');
+      const data = await response.json();
+      const randomUserData = data.results[0];
+      setUserData({
+        username: randomUserData.login.username,
+        bio: 'Una breve descripción sobre ti',
+        imageUrl: randomUserData.picture.large,
+      });
+    } catch (error) {
+      console.error('Error fetching random user:', error);
+    }
+  };
+
+  const searchUserByUsername = async (username) => {
+    try {
+      const response = await fetch(`https://randomuser.me/api/?seed=${username}`);
+      const data = await response.json();
+      
+      // Extrae la información del primer resultado (puedes ajustar según la estructura de la respuesta)
+      const user = data.results[0];
+  
+      // Actualiza el estado con la información del usuario encontrado
+      setUserData({
+        username: `${user.name.first} ${user.name.last}`,
+        bio: 'Una breve descripción sobre ti',
+        imageUrl: user.picture.large,
+      });
+    } catch (error) {
+      console.error('Error fetching user by username:', error);
+    }
+  };
+  
+
+  useEffect(() => {
+    if (username) {
+      searchUserByUsername(username);
+    } else {
+      searchRandomUser();
+    }
+  }, [username]);
 
   const handleLogout = () => {
     navigate('/');
@@ -43,7 +92,7 @@ const Menu = () => {
       </header>
       <div>
         <nav class= ''>
-          <NAV title='navbar'/>
+          <NAV title='navbar' onSearch={searchRandomUser}/>
         </nav>
       </div>  
       <section class="hero">
