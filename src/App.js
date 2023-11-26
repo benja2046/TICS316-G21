@@ -8,6 +8,8 @@ import Contact from './components/contact';
 import Home from './components/home';
 import ForgotAcount from './components/forgotAcount';
 import CreateAcount from './components/createAcount';
+import UserProfile from './components/usuarioX';
+import { SearchProvider } from './components/SearchProvider';
 
 const App = () => {
   
@@ -22,6 +24,7 @@ const App = () => {
         <Route path='/home' element={<Home/>} />
         <Route path='/olvide-contraseña' element={<ForgotAcount/>} />
         <Route path='/crear-cuenta' element={<CreateAcount/>} />
+        <Route path="/user/:username" element={<UserProfile />} />
 
         </Routes>
     </Router>

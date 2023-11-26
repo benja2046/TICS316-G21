@@ -1,6 +1,7 @@
 import NAV from './navbar.js'
 import Canvas from './overlay.js'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import './usuario.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col, Image, ListGroup, Button } from 'react-bootstrap';
@@ -13,9 +14,57 @@ const config = <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler i
 </svg>;
 
 function Usuario() {
-  const [username, setUsername] = useState('Nombre de usuario');
-  const [bio, setBio] = useState('Una breve descripción sobre ti');
-  const [imageUrl, setImageUrl] = useState('https://via.placeholder.com/150');
+  const [User, setUsername] = useState('Nombre de usuario');
+ const [bio, setBio] = useState('Una breve descripción sobre ti');
+ const [imageUrl, setImageUrl] = useState('https://via.placeholder.com/150');
+ const { username } = useParams(); // Obtiene el parámetro de la URL (nombre de usuario)
+  const [userData, setUserData] = useState({
+    username: 'Nombre de usuario',
+    bio: 'Una breve descripción sobre ti',
+    imageUrl: 'https://via.placeholder.com/150',
+  });
+  const searchRandomUser = async () => {
+    try {
+      const response = await fetch('https://randomuser.me/api/');
+      const data = await response.json();
+      const randomUserData = data.results[0];
+      setUserData({
+        username: randomUserData.login.username,
+        bio: 'Una breve descripción sobre ti',
+        imageUrl: randomUserData.picture.large,
+      });
+    } catch (error) {
+      console.error('Error fetching random user:', error);
+    }
+  };
+
+  const searchUserByUsername = async (username) => {
+    try {
+      const response = await fetch(`https://randomuser.me/api/?seed=${username}`);
+      const data = await response.json();
+      
+      // Extrae la información del primer resultado (puedes ajustar según la estructura de la respuesta)
+      const user = data.results[0];
+  
+      // Actualiza el estado con la información del usuario encontrado
+      setUserData({
+        username: `${user.name.first} ${user.name.last}`,
+        bio: 'Una breve descripción sobre ti',
+        imageUrl: user.picture.large,
+      });
+    } catch (error) {
+      console.error('Error fetching user by username:', error);
+    }
+  };
+  
+
+  useEffect(() => {
+    if (username) {
+      searchUserByUsername(username);
+    } else {
+      searchRandomUser();
+    }
+  }, [username]);
 
   const handleUpdateProfile = (newUsername, newBio, newImageUrl) => {
     setUsername(newUsername);
@@ -28,30 +77,31 @@ function Usuario() {
 
       </header>
       <nav>
-        <NAV title='navbar' />
-      </nav>
-      <body className='bodyU'>
-        <Container className='mt-5'>
-          <Row>
-            <Col md={6}>
-              <Image src={imageUrl} roundedCircle className="profile-picture" />
-              <h3 className="username">{username}</h3>
-              <p className="bio">{bio}</p>
-              <Button variant="outline-primary">Seguir</Button>
-            </Col>
-            <Col md={3}>
-              <ListGroup>
-                <ListGroup.Item>Publicaciones: 3</ListGroup.Item>
-                <ListGroup.Item>Seguidores: 250</ListGroup.Item>
-                <ListGroup.Item>Siguiendo: 150</ListGroup.Item>
-              </ListGroup>
-            </Col>
-            <Col md={2}>
 
-              <Canvas key="canvas"
-                placement="end"
-                name={config}
-                updateProfile={handleUpdateProfile} />
+        <NAV title='navbar' onSearch={searchRandomUser}/>
+    </nav>
+    <body className='bodyU'>
+      <Container className='mt-5'>
+        <Row>
+          <Col md={6}>
+            <Image src={imageUrl} roundedCircle className="profile-picture" />
+            <h3 className="username">{User}</h3>
+            <p className="bio">{bio}</p>
+            <Button variant="outline-primary">Seguir</Button>
+          </Col>
+          <Col md={3}>
+            <ListGroup>
+              <ListGroup.Item>Publicaciones: 3</ListGroup.Item>
+              <ListGroup.Item>Seguidores: 250</ListGroup.Item>
+              <ListGroup.Item>Siguiendo: 150</ListGroup.Item>
+            </ListGroup>
+          </Col>
+          <Col md={2}>
+          
+            <Canvas key="canvas"
+            placement="end"
+            name={config}
+            updateProfile={handleUpdateProfile} />
 
             </Col>
           </Row>
