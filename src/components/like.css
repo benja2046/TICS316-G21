@@ -1,0 +1,9 @@
+.heart-icon.red {
+    stroke: #ff2222; /* Cambia el color a gris cuando está clicado */
+    fill: #ff2222;
+  }
+
+.likebtn {
+    border: none;
+    background-color: transparent;
+}

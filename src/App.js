@@ -6,6 +6,8 @@ import Public from './components/Publicaciones';
 import About from './components/about';
 import Contact from './components/contact';
 import Home from './components/home';
+import ForgotAcount from './components/forgotAcount';
+import CreateAcount from './components/createAcount';
 
 const App = () => {
   
@@ -18,6 +20,9 @@ const App = () => {
         <Route path="/about" element={<About/>} />
         <Route path="/contact" element={<Contact/>} />
         <Route path='/home' element={<Home/>} />
+        <Route path='/olvide-contraseña' element={<ForgotAcount/>} />
+        <Route path='/crear-cuenta' element={<CreateAcount/>} />
+
         </Routes>
     </Router>
   );

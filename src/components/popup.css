@@ -76,3 +76,34 @@
     padding: 0px 20px 20px 30px;
     overflow-wrap: break-word;
 }
+
+.post_commentBox {
+    display: flex;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.post_input{
+    flex: 1;
+    border: none;
+    border-top: 1px solid lightgray;
+
+}
+
+.post_button{
+    flex: 0;
+    border: none;
+    background-color: transparent;
+    border-top: 1px solid lightgray;
+    color: rgb(93, 104, 116);
+}
+
+.post_button:hover{
+    color: rgb(204, 216, 229);
+}
+
+.post_comments{
+    padding: 10px;
+}
+
+

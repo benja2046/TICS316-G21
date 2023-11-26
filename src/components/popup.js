@@ -1,9 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './popup.css';
 import Avatar from '@mui/material/Avatar';
+import LikeButton from './Like';
 
-function Popup({ post, onClose }) {
-    if (!post) return null; // No mostrar el Popup si no hay publicación seleccionada
+function Popup({ post, onClose, comments, onCommentChange, onPostComment }) {
+    const [comment, setComment] = useState('');
+
+
+    if (!post) return null;
+
+    const postComment = (event) => {
+        event.preventDefault();
+        // Llamar a la función onPostComment con el nuevo comentario
+        onPostComment({ username: "TomasPantoja", text: comment });
+        // Limpiar el campo de comentario
+        setComment('');
+    };
+
+    const handleCommentChange = (e) => {
+        setComment(e.target.value);
+        onCommentChange(e); // Puedes llamar a onCommentChange aquí si es necesario
+    };
+
+    const handlePostComment = (event) => {
+        event.preventDefault();
+        // Validar que el comentario no esté vacío
+        if (comment.trim() === "") {
+            return;
+        }
+    
+        // Pasar el nuevo comentario al componente padre
+        onPostComment({ username: "TomasPantoja", text: comment });
+    
+        setComment(""); // Limpiar el campo de comentario
+    };
+
 
     return (
         <>
@@ -33,6 +64,33 @@ function Popup({ post, onClose }) {
                 </h4>
 
                 <p className='popup_description'>{post.description}</p>
+
+                <div className="post_comments">
+                    {comments.map((c, index) => (
+                        <p key={index}>
+                             <strong>{c.username} </strong> {c.text} 
+                        </p>
+                    ))}
+                </div>
+
+                <LikeButton/>
+                <form className='post_commentBox' onSubmit={postComment}>
+                    <input
+                        className="post_input"
+                        type="text"
+                        placeholder='Agregar comentario...'
+                        value={comment}
+                        onChange={handleCommentChange}
+                    />
+                    <button
+                        className="post_button"
+                        disabled={!comment}
+                        type='submit'
+                    >
+                        Publicar
+                    </button>
+                </form>
+
 
 
             </div>

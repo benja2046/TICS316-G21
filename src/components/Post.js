@@ -12,7 +12,7 @@ function Post({ username, avatarImage, image, title, description, onClick }) {
                         className='post_avatar'
                         alt={username}
                         src={avatarImage}
-                        sx={{ width: 24, height: 24 }}
+                        sx={{ width: 30, height: 30 }}
                     />
                     <h3>{username}</h3>
                 </div>
