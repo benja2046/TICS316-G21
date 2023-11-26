@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import NAV from "./navbar.js";
-import Footer from "./footer.js";
 import './contact.css'
 
 function Contact() {
@@ -56,7 +55,7 @@ function Contact() {
     }
   }, [username]);
   return (
-    <div className='Home'>
+    <div className='Contact'>
       <header class="title">
         <h1>Welcome</h1>
       </header>

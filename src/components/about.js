@@ -87,8 +87,8 @@ const Menu = () => {
   };
 
   return (
-    <div>
-      <header className='header'>
+    <div className='about'>
+      <header className='about-header'>
       </header>
       <div>
         <nav class= ''>

@@ -7,7 +7,7 @@
   --primaryfont: 'Roboto Mono', monospace;
 }
 
-body {
+.about {
   font-family: 'Helvetica', 'Arial', sans-serif;
   text-align: center;
   background: linear-gradient(
@@ -18,25 +18,25 @@ body {
     );
 }
 
-h1 {
+.about h1 {
   font-size: 40px;
   font-weight: bolder; 
   
 }
 
-h2 {
+.about h2 {
   font-size: 30px;
 }
 
-h3 {
+.about h3 {
   font-size: 20px;
 }
 
-.content {
+.about .content {
   width: 1000px;
   margin: 0 auto;
 }
-.header{
+.about-header{
   background-image: url(/src/assets/RAWCREATE.png); 
   height: 50px ;
   background-position: center;
@@ -45,7 +45,7 @@ h3 {
   margin-top: 20px;
   }
 
-.button {
+  .about .button {
   background-color: var(--black
   );
   padding: 10px 20px;
@@ -57,31 +57,31 @@ h3 {
   border: none;
 }
 
-.button:hover {
+.about .button:hover {
   background-color: var(--secondary);
 }
 
-.title {
+.about .title {
   color: var(--black);
   text-align: center;
   font-weight: 1000;
   font-family: var(--primaryfont);
 } 
 
-.title span {
+.about .title span {
   font-size: 20px;
 }
 
-.nav-bg {
+.about .nav-bg {
   background-color: var(--black);
 }
 
-.primary-nav {
+.about .primary-nav {
   display:    flex;
   justify-content: space-evenly;
 }
 
-.primary-nav a{
+.about .primary-nav a{
   color: var(--white);
   padding: 10px;
   text-decoration: none;
@@ -89,12 +89,12 @@ h3 {
   font-weight: bold;
 }
 
-.primary-nav a:hover{
+.about .primary-nav a:hover{
   background-color: var(--secondary);
   color: var(--black);
 }
 
-.hero {
+.about .hero {
   background-image: url(/src/assets/Diseño.jpeg);
   height: 580px;
   background-size: cover;
@@ -102,7 +102,7 @@ h3 {
   margin-bottom: 20px;
 }
 
-.contenido-hero {
+.about .contenido-hero {
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
@@ -112,8 +112,8 @@ h3 {
   justify-content: center;
 }
 
-.contenido-hero h2,
-.contenido-hero a{
+.about .contenido-hero h2,
+.about .contenido-hero a{
   color: var(--white);
   text-align: center;
   text-decoration: none;
@@ -121,7 +121,7 @@ h3 {
   width: 20%;
 
 }
-.text{
+.about .text{
   color: var(--white);
   text-align: justify; 
   padding: 80px;
@@ -130,14 +130,14 @@ h3 {
   border: none;
 }
 
-.location {
+.about .location {
 
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.shadow {
+.about .shadow {
   
   -webkit-box-shadow: 0px 5px 16px 5px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 5px 16px 5px rgba(0,0,0,0.75);
@@ -146,12 +146,12 @@ h3 {
   padding: 50px;
 }
 
-.subjects {
+.about .subjects {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.logos{
+.about .logos{
   max-width: 100px; /* Cambia el tamaño de la imagen según tus necesidades */
   height: auto;
   background-color: transparent; /* Asegura que el fondo sea transparente */
@@ -161,14 +161,14 @@ h3 {
   padding: 10px;
   
 }
-.member {
+.about .member {
   display: grid;
   flex-direction: column;
   align-items: center;
   width: 300px; /* o algún otro valor fijo */
 
 }
-.perfil{
+.about .perfil{
   max-width: 100px; /* Cambia el tamaño de la imagen según tus necesidades */
   height: auto;
   background-color: transparent; /* Asegura que el fondo sea transparente */
@@ -177,7 +177,7 @@ h3 {
   max-height: 180px;
 
 }
-.imagen{
+.about .imagen{
   
   height: auto;
   background-color: transparent; 
