@@ -5,6 +5,9 @@ import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../assets/logo.png';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Button from 'react-bootstrap/Button';
 
 const NAV = ({ onSearch }) => {
   const navigate = useNavigate();
@@ -48,18 +51,22 @@ const NAV = ({ onSearch }) => {
             </NavDropdown>
           </Nav>
           <div className="d-flex align-items-center">
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Buscar usuario"
-            />
-            <button onClick={handleSearchClick}>Buscar Usuario</button>
+          <InputGroup>
+          <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+          <Form.Control
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Buscar usuario"
+          />
+        </InputGroup>
+        <Button variant="light" onClick={handleSearchClick}>
+          Buscar
+        </Button>
           </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 };
-
 export default NAV;

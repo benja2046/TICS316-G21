@@ -12,6 +12,7 @@ function Usuario() {
     username: 'Nombre de usuario',
     bio: 'Una breve descripción sobre ti',
     imageUrl: 'https://via.placeholder.com/150',
+    posts: [], // Agrega un array para almacenar las publicaciones
   });
 
   const searchRandomUser = async () => {
@@ -31,23 +32,27 @@ function Usuario() {
 
   const searchUserByUsername = async (username) => {
     try {
-      const response = await fetch(`https://randomuser.me/api/?seed=${username}`);
-      const data = await response.json();
-      
-      // Extrae la información del primer resultado (puedes ajustar según la estructura de la respuesta)
-      const user = data.results[0];
-  
-      // Actualiza el estado con la información del usuario encontrado
+      const userResponse = await fetch(`https://randomuser.me/api/?seed=${username}`);
+      const userData = await userResponse.json();
+
+      const postResponse = await fetch('https://jsonplaceholder.typicode.com/posts'); // Endpoint de publicaciones simuladas
+      const allPosts = await postResponse.json();
+
+      const numberOfRandomPosts = 10; // Puedes ajustar este número según tus necesidades
+      const randomPosts = allPosts.sort(() => 0.5 - Math.random()).slice(0, numberOfRandomPosts);
+
+    const user = userData.results[0];
+
       setUserData({
         username: `${user.name.first} ${user.name.last}`,
         bio: 'Una breve descripción sobre ti',
         imageUrl: user.picture.large,
+        posts: randomPosts, // Almacena las publicaciones en el estado
       });
     } catch (error) {
-      console.error('Error fetching user by username:', error);
+      console.error('Error fetching user and posts:', error);
     }
   };
-  
 
   useEffect(() => {
     if (username) {
@@ -58,7 +63,7 @@ function Usuario() {
   }, [username]);
 
   return (
-    <div>
+    <div className='Acount'>
       <header className='header'>
         {/* Puedes agregar contenido adicional al encabezado si es necesario */}
       </header>
@@ -76,37 +81,23 @@ function Usuario() {
             </Col>
             <Col md={3}>
               <ListGroup>
-                <ListGroup.Item>Publicaciones: 3</ListGroup.Item>
+                <ListGroup.Item>Publicaciones: {userData.posts.length}</ListGroup.Item>
                 <ListGroup.Item>Seguidores: 250</ListGroup.Item>
                 <ListGroup.Item>Siguiendo: 150</ListGroup.Item>
               </ListGroup>
             </Col>
           </Row>
           <Row>
-            <Col md={4}>
-              <div className="post-container">
-              <Image src="https://via.placeholder.com/300x400" className="post-image" />
-              <div className="post-info">
-                <p>Esta es una publicación de ejemplo</p>
-              </div>
-             </div>
+          {userData.posts && userData.posts.map((post) => (
+            <Col md={4} key={post.id}>  
+    <div className="post-container">
+      <Image src="https://via.placeholder.com/300x400" className="post-image" />
+      <div className="post-info">
+        <p>{post.title}</p>
+      </div>
+    </div>
             </Col>
-            <Col md={4}>
-              <div className="post-container">
-              <Image src="https://via.placeholder.com/300x400" className="post-image" />
-              <div className="post-info">
-                <p>Esta es una publicación de ejemplo</p>
-              </div>
-             </div>
-            </Col>
-            <Col md={4}>
-              <div className="post-container">
-              <Image src="https://via.placeholder.com/300x400" className="post-image" />
-              <div className="post-info">
-                <p>Esta es una publicación de ejemplo</p>
-              </div>
-             </div>
-            </Col>
+          ))}
           </Row>
           {/* Agrega más contenido según sea necesario */}
         </Container>

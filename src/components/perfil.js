@@ -14,9 +14,9 @@ const config = <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler i
 </svg>;
 
 function Usuario() {
-  const [User, setUsername] = useState('Nombre de usuario');
+  const [User, setUsername] = useState('TomasPantoja');
  const [bio, setBio] = useState('Una breve descripción sobre ti');
- const [imageUrl, setImageUrl] = useState('https://via.placeholder.com/150');
+ const [imageUrl, setImageUrl] = useState("/319741640_219558007179500_3440059218991782107_n.jpg");
  const { username } = useParams(); // Obtiene el parámetro de la URL (nombre de usuario)
   const [userData, setUserData] = useState({
     username: 'Nombre de usuario',
@@ -87,7 +87,7 @@ function Usuario() {
             <Image src={imageUrl} roundedCircle className="profile-picture" />
             <h3 className="username">{User}</h3>
             <p className="bio">{bio}</p>
-            <Button variant="outline-primary">Seguir</Button>
+            
           </Col>
           <Col md={3}>
             <ListGroup>
@@ -108,7 +108,7 @@ function Usuario() {
           <Row>
             <Col md={4}>
               <div className="post-container">
-                <Image src="https://via.placeholder.com/300x400" className="post-image" />
+                <Image src="/00ejis46.jpg" className="post-image" />
                 <div className="post-info">
                   <p>Esta es una publicación de ejemplo</p>
                 </div>
@@ -116,7 +116,7 @@ function Usuario() {
             </Col>
             <Col md={4}>
               <div className="post-container">
-                <Image src="https://via.placeholder.com/300x400" className="post-image" />
+                <Image src="/123.jpg" className="post-image" />
                 <div className="post-info">
                   <p>Esta es una publicación de ejemplo</p>
                 </div>
@@ -124,7 +124,7 @@ function Usuario() {
             </Col>
             <Col md={4}>
               <div className="post-container">
-                <Image src="https://via.placeholder.com/300x400" className="post-image" />
+                <Image src="/Programacion-codigo-768x432.jpg" className="post-image" />
                 <div className="post-info">
                   <p>Esta es una publicación de ejemplo</p>
                 </div>
