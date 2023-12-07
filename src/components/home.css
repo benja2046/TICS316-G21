@@ -19,8 +19,8 @@
   padding-bottom: 25px;
 }
 
-.Column-Text p:first-of-type {
-  font-size: 60px !important;
+.Column-Title1 {
+  font-size: 50px ;
   font-style: oblique;
   font-weight: bold;
   text-align: center;
@@ -28,9 +28,9 @@
 
 .Column-Text {
   flex: 0.7;
-  border-radius: 150px 30px;
+  border-radius:  140px;
   padding: 30px;
-  font-size: 50px;
+  font-size: 40px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   text-align: center;
   color: #6c757d;

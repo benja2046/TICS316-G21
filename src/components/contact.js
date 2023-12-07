@@ -3,6 +3,10 @@ import { useParams } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import NAV from "./navbar.js";
 import './contact.css'
+import Footer from "./footer.js";
+import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 function Contact() {
   const { username } = useParams(); // Obtiene el parámetro de la URL (nombre de usuario)
@@ -55,45 +59,74 @@ function Contact() {
     }
   }, [username]);
   return (
-    <div className='Contact'>
+    <div className="Contact">
       <div>
         <nav class="">
-          <NAV title="navbar"  onSearch={searchRandomUser} />
+          <NAV
+            title="navbar"
+            onSearch={searchRandomUser}
+          />
         </nav>
       </div>
 
       <div class="">
         <div class="subtitle Column-Text1 shadow">Comunicate con Nosotros</div>
 
-        <div class="Container shadow">
-          <div class="Column-Text1 shadow box-1">
-            <br />
-            <p>Teléfono</p>
-            <ul>
-              <li>+### #### ####</li>
-              <li>#### #### ####</li>
-            </ul>
-            <br />
-          </div>
-          <div class="Column-Text1 shadow box-2">
-            <br />
-            <p>Correo</p>
-            <ul>
-              <li>++++++@+++.com</li>
-            </ul>
-            <br />
-          </div>
-          <div class="Column-Text1 shadow box-3">
-            <br />
-            <p>Dirección</p>
-            <p>Encuentra nuestras oficinas en</p>
-            <ul>
-              <li>+++++++ ####, Santiago</li>
-            </ul>
-            <br />
+        <div
+          class="Container"
+          id="contact-cards"
+        >
+          <div>
+            <Row
+              sm={1}
+              lg={3}
+              className=" py-2 px-4"
+            >
+              <Col className="p-2">
+                <Card
+                  className="Column-Text1 shadow h-100 box-1  "
+                  bg="light"
+                >
+                  <Card.Body>
+                    <Card.Title className="Column-Title1">Teléfono</Card.Title>
+                    <Card.Body>
+                      <div>+569 2100 2132</div>
+                      <div>+7255 3011</div>
+                    </Card.Body>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col className="p-2">
+                <Card
+                  className="Column-Text1 shadow h-100 box-2"
+                  bg="light"
+                >
+                  <Card.Body>
+                    <Card.Title className="Column-Title1">Correo</Card.Title>
+                    <Card.Body>RCTeam@hotmail.com</Card.Body>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col className="p-2">
+                <Card
+                  className="Column-Text1 shadow h-100 box-3"
+                  bg="light"
+                >
+                  <Card.Body>
+                    <Card.Title className="Column-Title1">Dirección</Card.Title>
+                    <Card.Body>
+                      Av. Nueva Providenia 9999, Santiago
+                    </Card.Body>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
           </div>
         </div>
       </div>
+      <footer>
+        <Footer title="footer" />
+      </footer>
     </div>
   );
 }
