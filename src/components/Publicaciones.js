@@ -4,6 +4,8 @@ import './Publicaciones.css';
 import Post from './Post'
 import Avatar from '@mui/material/Avatar';
 import Popup from './popup';
+import NAV from './navbar';
+import { useParams } from 'react-router-dom';
 
 
 
@@ -50,7 +52,48 @@ function Articles() {
         forceUpdatePopup();
     };
 
+    const [User, setUsername] = useState('TomasPantoja');
+    const [bio, setBio] = useState('Una breve descripción sobre ti');
+    const [imageUrl, setImageUrl] = useState("/319741640_219558007179500_3440059218991782107_n.jpg");
+    const { username } = useParams(); // Obtiene el parámetro de la URL (nombre de usuario)
+    const [userData, setUserData] = useState({
+        username: 'Nombre de usuario',
+        bio: 'Una breve descripción sobre ti',
+        imageUrl: 'https://via.placeholder.com/150',
+    });
+  const searchRandomUser = async () => {
+    try {
+      const response = await fetch('https://randomuser.me/api/');
+      const data = await response.json();
+      const randomUserData = data.results[0];
+      setUserData({
+        username: randomUserData.login.username,
+        bio: 'Una breve descripción sobre ti',
+        imageUrl: randomUserData.picture.large,
+      });
+    } catch (error) {
+      console.error('Error fetching random user:', error);
+    }
+  };
 
+  const searchUserByUsername = async (username) => {
+    try {
+      const response = await fetch(`https://randomuser.me/api/?seed=${username}`);
+      const data = await response.json();
+
+      // Extrae la información del primer resultado (puedes ajustar según la estructura de la respuesta)
+      const user = data.results[0];
+
+      // Actualiza el estado con la información del usuario encontrado
+      setUserData({
+        username: `${user.name.first} ${user.name.last}`,
+        bio: 'Una breve descripción sobre ti',
+        imageUrl: user.picture.large,
+      });
+    } catch (error) {
+      console.error('Error fetching user by username:', error);
+    }
+  };
 
     const [newPost, setNewPost] = useState({
         username: "TomasPantoja",
@@ -120,60 +163,10 @@ function Articles() {
     return (
         <div className="Articles">
 
-            <div className="Articles_header">
-                <div className='left_header'>
-                    <img
-                        className="Articles_headerImage"
-                        src='/logoR.png'
-                        alt="logo rawcreate"
-                        width="auto"
-                        height="40"
-                    />
-                    <select id="perfilDropdown" onChange={handleDropdownChange}>
-                        <option value="/publicaciones">Publicaciones</option>
-                        <option value="/perfil">Perfil</option>
-                        <option value="/about">About</option>
-                        <option value="/contact">Contacto</option>
-                    </select>
-                </div>
+            <nav>
 
-
-
-
-                <Link to="/publicaciones">
-                    <img
-                        className="Articles_Imagebrand"
-                        src='/Captura_de_pantalla_2023-11-16_233049-removebg-preview.png'
-                        alt="rawcreate"
-                        height="40"
-                        width="auto"
-
-                    />
-
-                </Link>
-
-
-                <div className='rigth_header'>
-
-                    <Link className='logout_button' to="/">
-                        Cerrar sesión
-                    </Link>
-
-                    <Link to="/perfil">
-                        <Avatar
-                            className='post_avatar'
-                            alt="Tomas Pantoja"
-                            src="/319741640_219558007179500_3440059218991782107_n.jpg"
-                            sx={{ width: 30, height: 30 }}
-                        />
-                    </Link>
-
-                </div>
-
-            </div>
-
-            <Link to="/perfil">
-            </Link>
+<NAV title='navbar' onSearch={searchRandomUser} />
+            </nav>
 
 
 

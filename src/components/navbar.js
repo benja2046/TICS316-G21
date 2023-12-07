@@ -32,6 +32,12 @@ const NAV = ({ onSearch }) => {
     onSearch(searchTerm); // Llamar a la función de búsqueda con el término actual
     navigate(`/user/${searchTerm}`); // Navegar a la ruta del usuario buscado
   };
+  const more =<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dots-vertical" width="28" height="28" viewBox="0 0 24 24" stroke-width="3" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+  <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+  <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+</svg>
 
 
   return (
@@ -43,11 +49,12 @@ const NAV = ({ onSearch }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavDropdown title="Perfil" id="basic-nav-dropdown">
+            <NavDropdown title= {more} id="basic-nav-dropdown">
               <NavDropdown.Item onClick={() => navigate('/perfil')}>Perfil</NavDropdown.Item>
               <NavDropdown.Item onClick={() => navigate('/about')}>About</NavDropdown.Item>
               <NavDropdown.Item onClick={() => navigate('/publicaciones')}>Publicaciones</NavDropdown.Item>
               <NavDropdown.Item onClick={() => navigate('/contact')}>Contacto</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => navigate('/#')}>Cerrar sesion</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <div className='logo-navbar mx-auto'>
