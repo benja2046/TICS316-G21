@@ -1,0 +1,18 @@
+.Acount {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .bodyU {
+    flex: 1;
+  }
+  
+  .footer {
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }

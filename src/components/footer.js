@@ -1,37 +1,65 @@
 import React from 'react';
 import './Footer.css';
+import { Link } from "react-router-dom"
+import Avatar from '@mui/material/Avatar';
 
 const Footer = () => {
     return (
-        <footer className="footer">
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-4">
-                        <h5>Title</h5>
-                        <p>Description about the product or service.</p>
-                    </div>
-                    <div className="col-md-4">
-                        <h5>Quick Links</h5>
-                        <ul className="footer-links">
-                            <li><a href="#">Link 1</a></li>
-                            <li><a href="#">Link 2</a></li>
-                            <li><a href="#">Link 3</a></li>
-                            <li><a href="#">Link 4</a></li>
-                        </ul>
-                    </div>
-                    <div className="col-md-4">
-                        <h5>Contact</h5>
-                        <p>Address, Phone, Email</p>
-                        <div className="footer-social">
-                            <a href="#"><i className="fab fa-facebook-f"></i></a>
-                            <a href="#"><i className="fab fa-twitter"></i></a>
-                            <a href="#"><i className="fab fa-instagram"></i></a>
-                            <a href="#"><i className="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
+        <div class="footer-basic">
+        <footer>
+
+            <div className="list-inline">
+                <ul>
+                    <Link to="/home"><li class="list-inline-item"><a href="#">Inicio</a></li></Link>
+                    <Link to="/contact"><li class="list-inline-item"><a href="#">Contactos</a></li></Link>
+                    <Link to="/publicaciones"><li class="list-inline-item"><a href="#">Publicaciones</a></li></Link>
+                    <Link to="/"><li class="list-inline-item"><a href="#">Login</a></li></Link>
+                    <Link to="/about"><li class="list-inline-item"><a href="#">RawCreate</a></li></Link>
+                </ul>
             </div>
+
+            <div className="copyright">
+                <p >RawCreate © 2023</p>
+            </div>
+
+
+            <div class="social">
+                <h5>Equipo:</h5>
+                <a href="https://www.linkedin.com/in/tom%C3%A1s-pantoja-gallinal-97895a234/">
+                    <Avatar
+                        className='post_avatar'
+                        alt="Tomas Pantoja"
+                        src="319741640_219558007179500_3440059218991782107_n.jpg"
+                        sx={{ width: 40, height: 40 }}
+                    />
+
+                </a>
+                <a href="https://www.linkedin.com/in/agustin-vargas-ponce-534b7b236/">
+                    <Avatar
+                        className='post_avatar'
+                        alt="Agustin Vargas"
+                        src="Agustin.png"
+                        sx={{ width: 40, height: 40 }}
+                    />
+
+                </a>
+                <a href="https://www.linkedin.com/in/benjamin-gonzalez-834771291?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+                    <Avatar
+                        className='post_avatar'
+                        alt="Benjamin Gonzalez"
+                        src="benjamin.png"
+                        sx={{ width: 40, height: 40 }}
+                    />
+
+                </a>
+            </div>
+
+
+
+
+
         </footer>
+    </div>
     );
 };
 

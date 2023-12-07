@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import './Publicaciones.css';
 import Post from './Post'
 import Avatar from '@mui/material/Avatar';
@@ -8,6 +8,7 @@ import Popup from './popup';
 
 
 function Articles() {
+    const navigate = useNavigate();
     const [showPopup, setShowPopup] = useState(false);
     const [selectedPost, setSelectedPost] = useState(null);
     const [comment, setComment] = useState('');
@@ -111,6 +112,11 @@ function Articles() {
         });
     };
 
+    const handleDropdownChange = (event) => {
+        const selectedValue = event.target.value;
+        navigate(selectedValue);
+      };
+
     return (
         <div className="Articles">
 
@@ -123,7 +129,16 @@ function Articles() {
                         width="auto"
                         height="40"
                     />
+                    <select id="perfilDropdown" onChange={handleDropdownChange}>
+                        <option value="/publicaciones">Publicaciones</option>
+                        <option value="/perfil">Perfil</option>
+                        <option value="/about">About</option>
+                        <option value="/contact">Contacto</option>
+                    </select>
                 </div>
+
+
+
 
                 <Link to="/publicaciones">
                     <img

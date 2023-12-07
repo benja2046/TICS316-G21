@@ -2,7 +2,7 @@ import NAV from './navbar.js'
 import Canvas from './overlay.js'
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import './usuario.css';
+import './perfil.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col, Image, ListGroup, Button } from 'react-bootstrap';
 import Footer from './footer.js';
@@ -15,9 +15,9 @@ const config = <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler i
 
 function Usuario() {
   const [User, setUsername] = useState('TomasPantoja');
- const [bio, setBio] = useState('Una breve descripción sobre ti');
- const [imageUrl, setImageUrl] = useState("/319741640_219558007179500_3440059218991782107_n.jpg");
- const { username } = useParams(); // Obtiene el parámetro de la URL (nombre de usuario)
+  const [bio, setBio] = useState('Una breve descripción sobre ti');
+  const [imageUrl, setImageUrl] = useState("/319741640_219558007179500_3440059218991782107_n.jpg");
+  const { username } = useParams(); // Obtiene el parámetro de la URL (nombre de usuario)
   const [userData, setUserData] = useState({
     username: 'Nombre de usuario',
     bio: 'Una breve descripción sobre ti',
@@ -42,10 +42,10 @@ function Usuario() {
     try {
       const response = await fetch(`https://randomuser.me/api/?seed=${username}`);
       const data = await response.json();
-      
+
       // Extrae la información del primer resultado (puedes ajustar según la estructura de la respuesta)
       const user = data.results[0];
-  
+
       // Actualiza el estado con la información del usuario encontrado
       setUserData({
         username: `${user.name.first} ${user.name.last}`,
@@ -56,7 +56,7 @@ function Usuario() {
       console.error('Error fetching user by username:', error);
     }
   };
-  
+
 
   useEffect(() => {
     if (username) {
@@ -73,35 +73,32 @@ function Usuario() {
   };
   return (
     <div className='Acount'>
-      <header className='header'>
-
-      </header>
       <nav>
 
-        <NAV title='navbar' onSearch={searchRandomUser}/>
-    </nav>
-    <body className='bodyU'>
-      <Container className='mt-5'>
-        <Row>
-          <Col md={6}>
-            <Image src={imageUrl} roundedCircle className="profile-picture" />
-            <h3 className="username">{User}</h3>
-            <p className="bio">{bio}</p>
-            
-          </Col>
-          <Col md={3}>
-            <ListGroup>
-              <ListGroup.Item>Publicaciones: 3</ListGroup.Item>
-              <ListGroup.Item>Seguidores: 250</ListGroup.Item>
-              <ListGroup.Item>Siguiendo: 150</ListGroup.Item>
-            </ListGroup>
-          </Col>
-          <Col md={2}>
-          
-            <Canvas key="canvas"
-            placement="end"
-            name={config}
-            updateProfile={handleUpdateProfile} />
+        <NAV title='navbar' onSearch={searchRandomUser} />
+      </nav>
+      <body className='bodyU'>
+        <Container className='mt-5'>
+          <Row>
+            <Col md={6}>
+              <Image src={imageUrl} roundedCircle className="profile-picture" />
+              <h3 className="username">{User}</h3>
+              <p className="bio">{bio}</p>
+
+            </Col>
+            <Col md={3}>
+              <ListGroup>
+                <ListGroup.Item>Publicaciones: 3</ListGroup.Item>
+                <ListGroup.Item>Seguidores: 250</ListGroup.Item>
+                <ListGroup.Item>Siguiendo: 150</ListGroup.Item>
+              </ListGroup>
+            </Col>
+            <Col md={2}>
+
+              <Canvas key="canvas"
+                placement="end"
+                name={config}
+                updateProfile={handleUpdateProfile} />
 
             </Col>
           </Row>

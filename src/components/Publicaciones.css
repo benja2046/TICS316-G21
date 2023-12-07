@@ -4,7 +4,7 @@
     rgb(255, 255, 255) 65%,
     rgba(255, 255, 255, 0)
   );
-  padding: 10px 10px 20px 10px;
+  padding: 10px 10px 50px 10px;
   justify-content: space-between;
   display: flex;
   margin-top: auto;
@@ -66,6 +66,23 @@ a {
   align-items: flex-start;
   
 }
+
+@media (max-width: 1100px) {
+  .Articles .posts {
+    grid-template-columns: repeat(1, 1fr); /* Cambia a una sola columna cuando el ancho es <= 768px */
+  }
+}
+
+@media (max-width: 750px) {
+  .Articles .body {
+    grid-template-columns: repeat(1, 1fr); /* Cambia a una sola columna cuando el ancho es <= 768px */
+  }
+
+  .Articles_Imagebrand {
+    display: none;
+  }
+}
+
 
 .upload {
   max-width: 400px;
@@ -191,6 +208,7 @@ ul {
 
 .footer-basic .social > a:hover {
   opacity:0.9;
+  
 }
 
 .footer-basic .copyright {
@@ -207,4 +225,57 @@ ul {
   margin-right: 10px;
   text-align:center;
   color: #aaa;
+}
+
+#perfilDropdown {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #6b7988;
+  background-color: #ffffff00;
+  border: 1px solid rgba(0, 123, 255, 0);
+  border-radius: 4px;
+  position: relative;
+}
+
+#perfilDropdown option {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+#perfilDropdown option:hover {
+  background-color: #ddd;
+}
+
+#perfilDropdown option:focus {
+  outline: none;
+}
+
+#perfilDropdown:focus {
+  outline: none;
+  border-color: #0056b3;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+#perfilDropdown:hover {
+  color: #0056b3;
+  background-color: #f9f9f9;
+}
+
+@media (max-width: 750px) {
+  .footer-basic .social {
+    display: none;
+  }
+
+  .footer-basic .list-inline {
+    display: none;
+  }
+
+  .footer-basic .copyright {
+    text-align: center;
+    margin: auto;
+  }
 }

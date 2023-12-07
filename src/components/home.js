@@ -1,14 +1,12 @@
 import React from 'react';
 import logoR from '../assets/logo.png';
 import NAV from "./navbar.js";
-import './home.css'
+import './home.css';
+import Footer from './footer.js';
 
 function Home() {
   return (
     <div className='Home'>
-      <header className='header'>
-        
-        </header>
       <div>
         <nav title="navbar">
           <NAV title="navbar" />
@@ -19,7 +17,7 @@ function Home() {
           <div class="Column-Text shadow">
             <br />
             <p>¿Estas Listo?</p>
-            <p>Adentrate a encontrar tu solucion</p>
+            <p>Comparte tus ideas y problemas que quieres solucionar.</p>
             <br />
           </div>
           <div class="logoContainer ">
@@ -31,6 +29,9 @@ function Home() {
           </div>
         </div>
       </div>
+      <footer>
+        <Footer title='footer' />
+      </footer>
     </div>
   );
 }

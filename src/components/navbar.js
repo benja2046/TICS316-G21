@@ -28,11 +28,11 @@ const NAV = ({ onSearch }) => {
     searchRandomUser();
   }, []);
 
-   const handleSearchClick = () => {
+  const handleSearchClick = () => {
     onSearch(searchTerm); // Llamar a la función de búsqueda con el término actual
     navigate(`/user/${searchTerm}`); // Navegar a la ruta del usuario buscado
   };
-  
+
 
   return (
     <Navbar bg="light" expand="lg" sticky="top">
@@ -50,19 +50,29 @@ const NAV = ({ onSearch }) => {
               <NavDropdown.Item onClick={() => navigate('/contact')}>Contacto</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <div className="d-flex align-items-center">
-          <InputGroup>
-          <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-          <Form.Control
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Buscar usuario"
+          <div className='logo-navbar mx-auto'>
+          <img
+                        className="Articles_Imagebrand"
+                        src='/Captura_de_pantalla_2023-11-16_233049-removebg-preview.png'
+                        alt="rawcreate"
+                        height="40"
+                        width="auto"
+
           />
-        </InputGroup>
-        <Button variant="light" onClick={handleSearchClick}>
-          Buscar
-        </Button>
+          </div>
+          <div className="d-flex align-items-center">
+            <InputGroup>
+              <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+              <Form.Control
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Buscar usuario"
+              />
+            </InputGroup>
+            <Button variant="light" onClick={handleSearchClick}>
+              Buscar
+            </Button>
           </div>
         </Navbar.Collapse>
       </Container>

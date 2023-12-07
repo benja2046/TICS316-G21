@@ -56,9 +56,6 @@ function Contact() {
   }, [username]);
   return (
     <div className='Contact'>
-      <header class="title">
-        <h1>Welcome</h1>
-      </header>
       <div>
         <nav class="">
           <NAV title="navbar"  onSearch={searchRandomUser} />

@@ -36,14 +36,6 @@
   width: 1000px;
   margin: 0 auto;
 }
-.about-header{
-  background-image: url(/src/assets/RAWCREATE.png); 
-  height: 50px ;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  }
 
   .about .button {
   background-color: var(--black
